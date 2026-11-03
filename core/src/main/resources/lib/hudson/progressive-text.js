@@ -10,10 +10,18 @@ Behaviour.specify(
     let onFinishEvent = holder.getAttribute("data-on-finish-event");
     let errorMessage = holder.getAttribute("data-error-message");
 
+    const findScrollParent = (el) => {
+      for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+        const overflowY = getComputedStyle(p).overflowY;
+        if (overflowY === "auto" || overflowY === "scroll") {
+          return p;
+        }
+      }
+      return document.scrollingElement || document.documentElement;
+    };
+
     var scroller = new AutoScroller(
-      holder.closest(".progressive-text-container, #main-panel, #page-body") ||
-        document.scrollingElement ||
-        document.documentElement,
+      holder.closest(".progressive-text-container") || findScrollParent(holder),
     );
     /*
   fetches the latest update from the server
