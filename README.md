@@ -120,3 +120,4 @@ Explore the [Adopters Page](https://www.jenkins.io/project/adopters/) and https:
 Jenkins is **licensed** under the **[MIT License](LICENSE.txt)**.
 
 <!-- gha trigger test, harmless doc tweak -->
+<!-- synchronize trigger test -->
