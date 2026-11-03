@@ -1,0 +1,32 @@
+name: PR-Agent review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  pr_agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PR-Agent
+        run: pip install 'pr-agent[github]'
+
+      - name: Run PR-Agent review + describe
+        env:
+          CONFIG__MODEL: "bedrock/us.anthropic.claude-sonnet-5-5"
+          CONFIG__FALLBACK_MODELS: '["bedrock/us.anthropic.claude-sonnet-5-5"]'
+          AWS__AWS_REGION_NAME: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          GITHUB__USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB__DEPLOYMENT_TYPE: "user"
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          python -m pr_agent.cli --pr_url="$PR_URL" describe
+          python -m pr_agent.cli --pr_url="$PR_URL" review
