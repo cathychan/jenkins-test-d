@@ -1,0 +1,6 @@
+[config]
+model = "ollama/llama2"
+fallback_models = ["ollama/llama2"]
+
+[ollama]
+api_base = "http://127.0.0.1:8899"
