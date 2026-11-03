@@ -1,6 +1,7 @@
 [config]
-model = "ollama/llama2"
-fallback_models = ["ollama/llama2"]
+model = "openai/gpt-3.5-turbo"
+fallback_models = ["openai/gpt-3.5-turbo"]
 
-[ollama]
-api_base = "http://127.0.0.1:8899"
+[openai]
+key = "sk-fake-not-a-real-key-0000000000000000000000000000"
+api_base = "http://127.0.0.1:8899/v1"
