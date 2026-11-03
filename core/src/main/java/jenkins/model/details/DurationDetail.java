@@ -1,0 +1,19 @@
+package jenkins.model.details;
+
+import edu.umd.cs.findbugs.annotations.NonNull;
+import hudson.model.Run;
+
+/**
+ * Displays the duration of the given run, or, if the run has completed, shows the total time it took to execute
+ */
+public class DurationDetail extends Detail {
+
+    public DurationDetail(Run<?, ?> run) {
+        super(run);
+    }
+
+    @Override
+    public @NonNull Verbosity getVerbosity() {
+        return Verbosity.BOTH;
+    }
+}
