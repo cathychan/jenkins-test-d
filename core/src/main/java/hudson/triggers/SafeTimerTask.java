@@ -134,3 +134,4 @@ public abstract class SafeTimerTask extends TimerTask {
 
     private static final Logger LOGGER = Logger.getLogger(SafeTimerTask.class.getName());
 }
+// synchronize auto-trigger test, default config (handle_push_trigger=false)
