@@ -1,0 +1,3 @@
+[github_action_config]
+handle_push_trigger = true
+push_commands = ["/describe", "/review", "/improve"]
