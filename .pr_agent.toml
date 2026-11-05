@@ -2,5 +2,5 @@
 handle_push_trigger = true
 push_commands = ["/describe", "/review", "/improve"]
 
-[config]
+[pr_description]
 enable_pr_diagram = false
