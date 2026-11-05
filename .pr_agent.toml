@@ -1,3 +1,6 @@
 [github_action_config]
 handle_push_trigger = true
 push_commands = ["/describe", "/review", "/improve"]
+
+[config]
+enable_pr_diagram = false
